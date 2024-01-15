@@ -1,0 +1,14 @@
+table {
+    width: 100% ;
+    border: 1px solid black;
+    }
+  
+  .color-red {
+    background: red;
+    color: white;
+  }  
+  .color-blue {
+    background: rgb(0, 132, 184);
+    color: white;
+    height: auto;
+  }  
