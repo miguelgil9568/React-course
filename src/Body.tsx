@@ -25,8 +25,10 @@ const Body = ({title}: Props) => {
         <div className='content'>
             <h1> {title} </h1>
             <form  id='form-input'>
-            <input type='text' id='Name' value={nuevoElemento} onChange={(value) => setNuevoElemento(value.target.value)} required/> <button type='submit' className='color-blue' 
-            onClick={agregarElemento} >Save</button>
+                <input type='text' id='Name' value={nuevoElemento} 
+                onChange={(value) => setNuevoElemento(value.target.value)} required/> 
+                <button type='submit' className='color-blue' 
+                onClick={agregarElemento} >Save</button>
             </form>
             <table >
                 <thead className="encabezado-tabla">
@@ -39,15 +41,7 @@ const Body = ({title}: Props) => {
                 <Section list={list}/>                
             </table>
         </div>
-        
-        {/* <div className="card">
-            <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-            </button>
-            <p>
-            Edit <code>src/App.tsx</code> and save to test HMR
-            </p>
-        </div> */}
+     
         <p className="read-the-docs">
             Primer entregable, Miguel Angel Gil Albarracin
         </p>

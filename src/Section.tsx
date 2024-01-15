@@ -26,7 +26,7 @@ const Section = ({list}: Props) => {
                 </tr>)) 
             }
         </tbody>
-    </>, list
+    </>
   )
 }
 
