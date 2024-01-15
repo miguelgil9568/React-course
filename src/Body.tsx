@@ -22,10 +22,10 @@ const Body = ({title}: Props) => {
     
     return (
         <>
-        <div className='content'>
+        <div className='div_border'>
             <h1> {title} </h1>
             <form  id='form-input'>
-                <input type='text' id='Name' value={nuevoElemento} 
+                <input type='text' id='Name' className='input' value={nuevoElemento} 
                 onChange={(value) => setNuevoElemento(value.target.value)} required/> 
                 <button type='submit' className='color-blue' 
                 onClick={agregarElemento} >Save</button>
