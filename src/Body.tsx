@@ -20,6 +20,11 @@ const Body = ({title}: Props) => {
         }
         };
     
+    const onDelete = (nombre: String) =>{
+        console.log('id a borrar = ' + nombre);
+        setList([...list.filter(nombreAux => nombreAux != nombre)])
+    }
+
     return (
         <>
         <div className='div_border'>
@@ -38,7 +43,7 @@ const Body = ({title}: Props) => {
                     <th>Operaciones</th>
                 </tr>
                 </thead>
-                <Section list={list}/>                
+                <Section list={list} onDelete={onDelete} />                
             </table>
         </div>
      

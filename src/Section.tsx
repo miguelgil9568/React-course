@@ -1,16 +1,22 @@
 interface Props{
-    list : string[]
+    onDelete: (nombre: String ) => void,
+    list: string[]
 }
 
-const Section = ({list}: Props) => {
+const Section = ({ onDelete, list}: Props) => {
     
 
-  const eleminarElemento = (index: number) =>{
+  eleminarElemento : (index: number) =>{
     console.log(index)
     const nuevaLista = [...list];
     nuevaLista.splice(index, 1);
     list = nuevaLista;
     console.log('nueva lista  = '+ list)
+  }
+  const numRows = list.length
+
+  interface idSeleccionado{
+    //onDelete
   }
 
   return (
@@ -22,7 +28,7 @@ const Section = ({list}: Props) => {
                     <td>{nombre}</td>
                     <td className="type-number">
                         <button className='color-red' 
-                        onClick={() => eleminarElemento(index)}>Delete</button></td>
+                        onClick={() => onDelete(nombre)}>Delete</button></td>
                 </tr>)) 
             }
         </tbody>
