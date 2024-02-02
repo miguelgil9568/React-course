@@ -8,21 +8,50 @@ interface Props{
     title: string
 }  
 
+export interface Welcome {
+    userId:    number;
+    id:        number;
+    title:     string;
+    completed: boolean;
+}
+
 const Body = ({title}: Props) => {
+
+    useEffect(() =>{
+        console.log('Se monto el componente');
+        return () => {fetch('https://jsonplaceholder.typicode.com/todos')
+          .then(response => response.json())
+          .catch(error => console.log('hubo un error ' + error))
+          .then(json => {
+            console.log('data ' + JSON.stringify(json));
+            setList(json);
+          });
+        }
+          
+        // return () => {}
+          // console.log('Se desmonto el componente')
+      })
     
-    const [list, setList] = useState<string[]>([]);
+    const [list, setList] = useState<Welcome[]>([]);
     const [nuevoElemento, setNuevoElemento] = useState<string>("");
 
     const agregarElemento = () => {
         if (nuevoElemento.trim() !== "") {
-            setList((prevElementos) => [...prevElementos, nuevoElemento]);
+            var nuevo: Welcome = {
+                id: 1,
+                title: nuevoElemento,
+                userId: 1,
+                completed: true
+            }
+
+            setList((prevElementos) => [...prevElementos , nuevo]);
             setNuevoElemento("");
         }
         };
     
     const onDelete = (nombre: String) =>{
         console.log('id a borrar = ' + nombre);
-        setList([...list.filter(nombreAux => nombreAux != nombre)])
+        setList([...list.filter(nombreAux => nombreAux.title != nombre)])
     }
 
     return (
@@ -39,6 +68,7 @@ const Body = ({title}: Props) => {
                 <thead className="encabezado-tabla">
                 <tr>
                     <th>Ítem</th>
+                    <th>Seleccionar</th>
                     <th>Nombre</th>
                     <th>Operaciones</th>
                 </tr>

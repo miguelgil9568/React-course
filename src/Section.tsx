@@ -1,6 +1,8 @@
+import { Welcome } from "./Body";
+
 interface Props{
     onDelete: (nombre: String ) => void,
-    list: string[]
+    list: Welcome[]
 }
 
 const Section = ({ onDelete, list}: Props) => {
@@ -22,13 +24,15 @@ const Section = ({ onDelete, list}: Props) => {
   return (
     <>
       <tbody className="cuerpo-tabla">
-            {list.map((nombre, index) =>(
+            {list.map((obj, index) =>(
                 <tr >
+                    <td>{index + 1}</td>
                     <td className="table-check"><input type='checkbox'></input></td>
-                    <td>{nombre}</td>
+                    <td>{obj.title}</td>
+                    <td>{obj.completed ? 'Completado' : 'No completado'}</td>
                     <td className="type-number">
                         <button className='color-red' 
-                        onClick={() => onDelete(nombre)}>Delete</button></td>
+                        onClick={() => onDelete(obj.title)}>Delete</button></td>
                 </tr>)) 
             }
         </tbody>
