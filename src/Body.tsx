@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Section from './Section'
 import './Body.css'
+import Paginacion from './Paginacion';
 
 
     
@@ -17,22 +18,25 @@ export interface Welcome {
 
 const Body = ({title}: Props) => {
 
+
     useEffect(() =>{
         console.log('Se monto el componente');
-        return () => {fetch('https://jsonplaceholder.typicode.com/todos')
+        fetch('https://jsonplaceholder.typicode.com/todos')
           .then(response => response.json())
           .catch(error => console.log('hubo un error ' + error))
           .then(json => {
             console.log('data ' + JSON.stringify(json));
             setList(json);
           });
+        return () => { 
         }
           
         // return () => {}
           // console.log('Se desmonto el componente')
-      })
+      }, [])
     
     const [list, setList] = useState<Welcome[]>([]);
+    const [listaMostrar, setLlistaMostrar] = useState<Welcome[]>([]);
     const [nuevoElemento, setNuevoElemento] = useState<string>("");
 
     const agregarElemento = () => {
@@ -54,6 +58,11 @@ const Body = ({title}: Props) => {
         setList([...list.filter(nombreAux => nombreAux.title != nombre)])
     }
 
+    const resultado = (lista: Welcome[]) =>{
+        //console.log('Lista paginada= ' + nombre);
+        setLlistaMostrar(lista)
+    }
+
     return (
         <>
         <div className='div_border'>
@@ -73,9 +82,11 @@ const Body = ({title}: Props) => {
                     <th>Operaciones</th>
                 </tr>
                 </thead>
-                <Section list={list} onDelete={onDelete} />                
+                <Section list={listaMostrar} onDelete={onDelete} />                
             </table>
+            <Paginacion list={list} onDelete={resultado} />  
         </div>
+
      
         <p className="read-the-docs">
             Primer entregable, Miguel Angel Gil Albarracin
