@@ -17,10 +17,12 @@ const Paginacion = ({onDelete ,list}: Props) => {
 
   const handlePaginaAnterior = () => {
     setPaginaActual((prev) => Math.max(prev - 1, 1));
+    onDelete(mostrarDatos)
   };
 
   const handlePaginaSiguiente = () => {
     setPaginaActual((prev) => Math.min(prev + 1, totalPaginas));
+    onDelete(mostrarDatos)
   };
 
   const mostrarDatos = list.slice(
@@ -29,7 +31,6 @@ const Paginacion = ({onDelete ,list}: Props) => {
   );
 
   useEffect(() =>{
-    
     onDelete(mostrarDatos)
     return () => { 
     }
