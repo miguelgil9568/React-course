@@ -15,11 +15,7 @@ const Section = ({ onDelete, list}: Props) => {
     list = nuevaLista;
     console.log('nueva lista  = '+ list)
   }
-  const numRows = list.length
 
-  interface idSeleccionado{
-    //onDelete
-  }
 
   return (
     <>

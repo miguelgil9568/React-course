@@ -21,7 +21,7 @@ const Body = ({title}: Props) => {
 
     useEffect(() =>{
         console.log('Se monto el componente');
-        fetch('https://jsonplaceholder.typicode.com/todos')
+        fetch('http://localhost:3000')//http://localhost:3000
           .then(response => response.json())
           .catch(error => console.log('hubo un error ' + error))
           .then(json => {
