@@ -21,7 +21,7 @@ const Body = ({title}: Props) => {
 
     useEffect(() =>{
         console.log('Se monto el componente');
-        fetch('http://localhost:3000')//http://localhost:3000
+        fetch('https://course-back-end-dev-fgaj.4.us-1.fl0.io/')//http://localhost:3000
           .then(response => response.json())
           .catch(error => console.log('hubo un error ' + error))
           .then(json => {
